@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech News Hub | 技術ニュースダイジェスト</title>
+  <meta name="description" content="はてなブックマークのテクノロジー、AI・機械学習、プログラミング新着記事を毎日の日付で一覧表示するニュースダッシュボード">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <div class="logo">
+        <span class="logo-icon">⚡</span>
+        <h1>Tech News Hub</h1>
+        <span class="badge-tag">Daily Digest</span>
+      </div>
+      <div class="header-controls">
+        <div class="date-picker-wrapper">
+          <label for="dateSelect">📅 対象日付:</label>
+          <select id="dateSelect" class="date-select">
+            <option value="latest">最新 (読み込み中...)</option>
+          </select>
+        </div>
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="記事を検索..." aria-label="記事キーワード検索">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Status / Summary -->
+  <section class="summary-bar">
+    <div class="container summary-content">
+      <div class="meta-info">
+        <span id="currentDateDisplay" class="current-date">---年--月--日</span>
+        <span class="update-time">最終更新: <span id="updateTimeDisplay">--:--</span></span>
+        <span class="total-badge"><strong id="totalCountDisplay">0</strong> 件の記事</span>
+      </div>
+      <div class="quick-actions">
+        <button id="refreshBtn" class="btn btn-secondary">🔄 再読み込み</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container main-layout">
+    
+    <!-- Category Tabs -->
+    <nav class="category-nav">
+      <button class="nav-tab active" data-category="all">
+        <span class="tab-label">全記事</span>
+        <span class="tab-count" id="countAll">0</span>
+      </button>
+      <button class="nav-tab" data-category="ai">
+        <span class="tab-icon">🤖</span>
+        <span class="tab-label">AI・機械学習</span>
+        <span class="tab-count" id="countAi">0</span>
+      </button>
+      <button class="nav-tab" data-category="programming">
+        <span class="tab-icon">💻</span>
+        <span class="tab-label">プログラミング</span>
+        <span class="tab-count" id="countProgramming">0</span>
+      </button>
+      <button class="nav-tab" data-category="tech">
+        <span class="tab-icon">🚀</span>
+        <span class="tab-label">テクノロジー全般</span>
+        <span class="tab-count" id="countTech">0</span>
+      </button>
+      <button class="nav-tab" data-category="saved">
+        <span class="tab-icon">⭐</span>
+        <span class="tab-label">あとで読む</span>
+        <span class="tab-count" id="countSaved">0</span>
+      </button>
+    </nav>
+
+    <!-- Articles Feed Grid -->
+    <section class="news-feed">
+      <div id="loadingSpinner" class="loading-state">
+        <div class="spinner"></div>
+        <p>ニュースを読み込んでいます...</p>
+      </div>
+
+      <div id="emptyState" class="empty-state hidden">
+        <p class="empty-title">記事が見つかりませんでした</p>
+        <p class="empty-sub">検索キーワードを変更するか、他のタブをお試しください。</p>
+      </div>
+
+      <div id="articleGrid" class="article-grid"></div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Tech News Hub — Powered by はてなブックマーク RSS & GitHub Actions</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
